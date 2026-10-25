@@ -107,7 +107,7 @@ function saveLocal(){const d=getData();try{localStorage.setItem('andongfiz_newto
 function downloadJSON(){const d=getData();const blob=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='AndongFiz_'+(d.kelompok||'Kelompok').replace(/[^a-z0-9_-]/gi,'_')+'.json';a.click();URL.revokeObjectURL(url);const r=document.getElementById('saveResult');r.textContent='Berkas JSON berhasil disiapkan untuk diunduh. Periksa folder unduhan perangkat.';r.classList.remove('hidden');}
 // ====== PENGIRIMAN LANGSUNG KE GURU (tanpa WhatsApp) ======
 // Guru mengisi URL Web App Google Apps Script di bawah (lihat petunjuk di berkas Code.gs).
-const ENDPOINT='';
+const ENDPOINT='https://script.google.com/a/macros/ppg.belajar.id/s/AKfycbwC3xHbCYQ4ZX2FR5K8yrfUSTMAkq1KaHTvi-AkQnZRwtttfRgLxoC6XncSm_1IyB6a/exec';
 const QUEUE_KEY='andongfiz_antrean_kirim',SENT_KEY='andongfiz_terakhir_terkirim';
 function showSend(msg,type){const r=document.getElementById('saveResult');r.innerHTML=msg;r.classList.remove('hidden');r.style.borderColor=type==='ok'?'#267461':type==='err'?'#b3472f':'';}
 function readQueue(){try{return JSON.parse(localStorage.getItem(QUEUE_KEY)||'null');}catch(e){return null;}}
